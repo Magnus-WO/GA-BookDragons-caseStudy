@@ -3,6 +3,7 @@ import Footer from "@/Components/Footer/Footer";
 import Section from "@/Components/Section/Section";
 import Stack from "@/Components/Stack/Stack";
 import Heading from "@/Components/Heading/Heading";
+import Grid from "@/Components/Grid/Grid";
 
 export default async function IndexPage() {
   return (
@@ -11,15 +12,18 @@ export default async function IndexPage() {
 
       <main>
         <Section variant="yellow">
-          <div className="container grid one-plus-two-columns large-gap">
+          <Grid columns="one-plus-two-columns" gap="large-gap">
             <div>
               <img
                 src="https://images.unsplash.com/photo-1774070231417-4bf4d2025878?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
                 alt=""
               />
-            </div>
-            <div className="stack">
-              <h1 className="section-heading">Velkommen til BookDragons!</h1>
+            </div>{" "}
+            <Stack as="div">
+              <Heading
+                as="h1"
+                headingText="Velkommen til BookDragons!"
+              ></Heading>
               <p>
                 Vår lille bokhandel holder til i Lillestrøm, og vi spesialiserer
                 oss på bøker innen mange forskjellige science fiction-sjangre!
@@ -31,11 +35,11 @@ export default async function IndexPage() {
               <a className="button m-bs-xl" href="#">
                 Se våre kommende arrangementer
               </a>
-            </div>
-          </div>
+            </Stack>
+          </Grid>
         </Section>
 
-        <Stack as="section" variant="large" marginType="m-b-xl">
+        <Stack as="section" variant="stack-large" marginType="m-b-xl">
           <Heading as="h2" headingText="Nyheter i butikken" />
           <div className="reel">
             <article className="box box-light-gray book-card">
