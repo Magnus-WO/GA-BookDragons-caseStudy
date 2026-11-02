@@ -1,6 +1,8 @@
 import SiteHeader from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import Section from "@/Components/Section/Section";
+import Stack from "@/Components/Stack/Stack";
+import Heading from "@/Components/Heading/Heading";
 
 export default async function IndexPage() {
   return (
@@ -33,8 +35,8 @@ export default async function IndexPage() {
           </div>
         </Section>
 
-        <section className="m-b-xl stack stack-large">
-          <h2 className="section-heading">Nyheter i butikken</h2>
+        <Stack as="section" variant="large" marginType="m-b-xl">
+          <Heading as="h2" headingText="Nyheter i butikken" />
           <div className="reel">
             <article className="box box-light-gray book-card">
               <img
@@ -200,7 +202,7 @@ export default async function IndexPage() {
               </a>
             </article>
           </div>
-        </section>
+        </Stack>
 
         <section className="m-b-xl stack stack-large">
           <h2 className="section-heading">Hva de ansatte leser akkurat nå</h2>
@@ -655,14 +657,6 @@ export default async function IndexPage() {
         </section>
       </main>
 
-      {/* <footer className="site-footer">
-        <p>&copy; BookDragons, 2026.</p>
-        <p>
-          Dette prosjektet er et eksempelprosjekt for frontendutvikling ved
-          Gokstad Akademiet. Dette er ikke en ekte nettbutikk eller bokhandel.
-          Beklager dette.
-        </p>
-      </footer> */}
       <Footer />
     </>
   );
