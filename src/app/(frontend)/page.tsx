@@ -1,4 +1,5 @@
 import SiteHeader from "@/Components/Header/Header";
+import Footer from "@/Components/Footer/Footer";
 
 export default async function IndexPage() {
   return (
@@ -653,14 +654,15 @@ export default async function IndexPage() {
         </section>
       </main>
 
-      <footer className="site-footer">
+      {/* <footer className="site-footer">
         <p>&copy; BookDragons, 2026.</p>
         <p>
           Dette prosjektet er et eksempelprosjekt for frontendutvikling ved
           Gokstad Akademiet. Dette er ikke en ekte nettbutikk eller bokhandel.
           Beklager dette.
         </p>
-      </footer>
+      </footer> */}
+      <Footer />
     </>
   );
 }
