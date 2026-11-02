@@ -1,5 +1,6 @@
 import SiteHeader from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
+import Section from "@/Components/Section/Section";
 
 export default async function IndexPage() {
   return (
@@ -7,7 +8,7 @@ export default async function IndexPage() {
       <SiteHeader />
 
       <main>
-        <section className="section section-yellow">
+        <Section variant="yellow">
           <div className="container grid one-plus-two-columns large-gap">
             <div>
               <img
@@ -30,7 +31,7 @@ export default async function IndexPage() {
               </a>
             </div>
           </div>
-        </section>
+        </Section>
 
         <section className="m-b-xl stack stack-large">
           <h2 className="section-heading">Nyheter i butikken</h2>
