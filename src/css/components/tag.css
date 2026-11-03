@@ -4,4 +4,5 @@
   border-radius: 0.2em;
   background-color: var(--tag-background-color, var(--ocean));
   color: var(--tag-text-color, var(--white));
+  text-decoration: none;
 }
