@@ -20,10 +20,12 @@ export default function Grid({
   recommendationSection,
 }: GridProps) {
   return (
-    <div
-      className={`container grid ${columns} ${gap} ${recommendationSection} ${productPosition}`}
-    >
-      {children}
-    </div>
+    <>
+      <div
+        className={`container grid ${columns} ${gap} ${recommendationSection} ${productPosition}`}
+      >
+        {children}
+      </div>
+    </>
   );
 }

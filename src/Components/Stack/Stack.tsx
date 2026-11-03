@@ -3,6 +3,7 @@ export type StackProps = {
   as: "section" | "div";
   variant?: "stack-small" | "stack-medium" | "stack-large";
   marginType?: string;
+  customClassName?: string;
 };
 
 export default function Stack({
@@ -10,9 +11,12 @@ export default function Stack({
   as,
   variant,
   marginType,
+  customClassName,
 }: StackProps) {
   const Element = as;
   return (
-    <Element className={`${marginType} stack ${variant}`}>{children}</Element>
+    <Element className={`${marginType} ${customClassName} stack  ${variant}`}>
+      {children}
+    </Element>
   );
 }
