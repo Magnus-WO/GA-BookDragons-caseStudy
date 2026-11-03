@@ -8,6 +8,7 @@ import { Book } from "@/types/bookType.types";
 import { type TagType } from "@/types/tagType.types";
 
 export type BookCardProps = {
+  section?: "" | "recommendation-section-product";
   boxBackgroundVariant: "box-light-gray" | "box-white";
   bookCoverWidth: number;
   bookCoverHeight: number;
@@ -16,6 +17,7 @@ export type BookCardProps = {
 };
 
 export default function BookCard({
+  section,
   boxBackgroundVariant,
   book,
   bookCoverWidth = 160,
@@ -23,7 +25,7 @@ export default function BookCard({
   bookBuyLink,
 }: BookCardProps) {
   return (
-    <article className={`box ${boxBackgroundVariant} book-card`}>
+    <article className={`${section} box ${boxBackgroundVariant} book-card`}>
       <Image
         className="book-card-cover"
         src={book.coverSrc}

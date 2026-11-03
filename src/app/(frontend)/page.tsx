@@ -7,101 +7,11 @@ import Grid from "@/Components/Grid/Grid";
 
 import BookCard from "@/Components/BookCard/BookCard";
 import { type Book } from "@/types/bookType.types";
+import { booksTestArray } from "@/ts/booksTestArray";
+import { testBook } from "@/ts/booksTestArray";
+import StaffPick from "@/Components/StaffPick/StaffPick";
 
 export default async function IndexPage() {
-  const booksTestArray = [
-    {
-      id: 1,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-    {
-      id: 3,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-    {
-      id: 4,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-    {
-      id: 5,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-    {
-      id: 6,
-      title: "Bakeskolen",
-      author: "Wenche Andersen",
-      price: 399,
-      coverSrc: "/WencheAndersenKokebok.jpg",
-      coverAlt:
-        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
-      link: "#",
-      tags: [
-        { id: 101, tagText: "Kokebok", tagLink: "#" },
-        { id: 102, tagText: "Baking", tagLink: "#" },
-        { id: 103, tagText: "Matlaging", tagLink: "#" },
-      ],
-    },
-  ];
-
   return (
     <>
       <SiteHeader />
@@ -148,10 +58,12 @@ export default async function IndexPage() {
           </div>
         </Stack>
 
-        <section className="m-b-xl stack stack-large">
-          <h2 className="section-heading">Hva de ansatte leser akkurat nå</h2>
+        <Stack variant="stack-large" as="section" marginType="m-b-xl">
+          <Heading as="h2" className="section-heading">
+            Hva de ansatte leser akkurat nå
+          </Heading>
           <article className="section section-yellow">
-            <div className="container grid large-gap two-plus-one-columns recommendation-section product-on-right">
+            {/* <div className="container grid large-gap two-plus-one-columns recommendation-section product-on-right">
               <div className="recommendation-section-text stack">
                 <h3 className="section-subheading">
                   Wenche har nettopp lest Wallace the Brave for første gang!
@@ -206,9 +118,14 @@ export default async function IndexPage() {
                   Kjøp (399,-)
                 </a>
               </div>
-            </div>
+            </div> */}
+            <StaffPick
+              productPosition="product-on-right"
+              staffPickHeaderText="Wenche har nettopp lest Wallace the Brave for første gang!"
+              staffPickBook={testBook}
+            />
 
-            <div className="container grid one-plus-two-columns large-gap recommendation-section product-on-left">
+            {/* <div className="container grid one-plus-two-columns large-gap recommendation-section product-on-left">
               <div className="recommendation-section-text stack">
                 <h3 className="section-subheading">
                   Månedens lydbok for Christian er skrevet av Adam Kay
@@ -266,9 +183,14 @@ export default async function IndexPage() {
                   Kjøp (299,-)
                 </a>
               </div>
-            </div>
+            </div> */}
+            <StaffPick
+              productPosition="product-on-left"
+              staffPickHeaderText="Månedens lydbok for Christian er skrevet av Adam Kay"
+              staffPickBook={testBook}
+            />
           </article>
-        </section>
+        </Stack>
 
         <section className="m-b-xl stack stack-large">
           <h2 className="section-heading">#BookTok</h2>
