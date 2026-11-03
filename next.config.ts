@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       {
         pathname: "/api/**",
       },
+      {
+        pathname: "/**",
+      },
     ],
   },
   webpack: (webpackConfig) => {
@@ -19,14 +22,14 @@ const nextConfig: NextConfig = {
       ".cjs": [".cts", ".cjs"],
       ".js": [".ts", ".tsx", ".js", ".jsx"],
       ".mjs": [".mts", ".mjs"],
-    }
+    };
 
-    return webpackConfig
+    return webpackConfig;
   },
   turbopack: {
     root: path.resolve(dirname),
   },
-  output: "standalone"
+  output: "standalone",
 };
 
 export default withPayload(nextConfig, { devBundleServerPackages: false });

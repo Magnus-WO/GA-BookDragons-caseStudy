@@ -4,10 +4,104 @@ import Section from "@/Components/Section/Section";
 import Stack from "@/Components/Stack/Stack";
 import Heading from "@/Components/Heading/Heading";
 import Grid from "@/Components/Grid/Grid";
-import Button from "@/Components/Button/Button";
-import Tag from "@/Components/Tag/Tag";
+
+import BookCard from "@/Components/BookCard/BookCard";
+import { type Book } from "@/types/bookType.types";
 
 export default async function IndexPage() {
+  const booksTestArray = [
+    {
+      id: 1,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+    {
+      id: 2,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+    {
+      id: 3,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+    {
+      id: 4,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+    {
+      id: 5,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+    {
+      id: 6,
+      title: "Bakeskolen",
+      author: "Wenche Andersen",
+      price: 399,
+      coverSrc: "/WencheAndersenKokebok.jpg",
+      coverAlt:
+        "Omslaget av Bakeskolen. Omslaget er rosa med en hvit marg på venstre side, og tittelen en i et hvitt kort på midten av omslaget.",
+      link: "#",
+      tags: [
+        { id: 101, tagText: "Kokebok", tagLink: "#" },
+        { id: 102, tagText: "Baking", tagLink: "#" },
+        { id: 103, tagText: "Matlaging", tagLink: "#" },
+      ],
+    },
+  ];
+
   return (
     <>
       <SiteHeader />
@@ -22,10 +116,7 @@ export default async function IndexPage() {
               />
             </div>{" "}
             <Stack as="div">
-              <Heading
-                as="h1"
-                headingText="Velkommen til BookDragons!"
-              ></Heading>
+              <Heading as="h1">Velkommen til BookDragons</Heading>
               <p>
                 Vår lille bokhandel holder til i Lillestrøm, og vi spesialiserer
                 oss på bøker innen mange forskjellige science fiction-sjangre!
@@ -42,174 +133,18 @@ export default async function IndexPage() {
         </Section>
 
         <Stack as="section" variant="stack-large" marginType="m-b-xl">
-          <Heading as="h2" headingText="Nyheter i butikken" />
+          <Heading as="h2">Nyheter i butikken</Heading>
           <div className="reel">
-            {/* Starten på ett kort */}
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1791378057/Produktbilder/Bokbasen/9788202943646.jpg?auto=webp&format=pjpg&width=960&height=1200&fit=cover"
-                alt=""
-                width="160"
-                height="200"
+            {booksTestArray.map((book: Book) => (
+              <BookCard
+                key={book.id}
+                boxBackgroundVariant="box-light-gray"
+                bookCoverHeight={200}
+                bookCoverWidth={160}
+                book={book}
+                bookBuyLink={book.link}
               />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">Bakeskolen</a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Wenche Andersen</p>
-
-                <p className="book-card-tags cluster">
-                  <Tag className="tag" link="#" tagText="Kokebok" />
-                  <Tag className="tag" link="#" tagText="Baking" />
-                  <Tag className="tag" link="#" tagText="Matlaging" />
-                </p>
-              </div>
-
-              <Button block="block-button" link="#" price={399}>
-                Kjøp:
-              </Button>
-            </article>
-
-            {/* Slutten på ett kort */}
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1787116804/Produktbilder/SDB/Book/SD%20Books/9781037200083.jpg?auto=webp&format=pjpg&width=480&height=600&fit=cover"
-                alt=""
-                width="160"
-                height="200"
-              />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">A Court of Splintered Harmony</a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Sarah J. Maas</p>
-
-                <p className="book-card-tags cluster">
-                  <span className="tag">Engelsk</span>
-                  <span className="tag">Pocket</span>
-                  <span className="tag">Roman</span>
-                </p>
-              </div>
-
-              <a className="button block-button" href="#">
-                Kjøp (499,-)
-              </a>
-            </article>
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1790161808/Produktbilder/Bokbasen/9788234726194.jpg?auto=webp&format=pjpg&width=480&height=600&fit=cover"
-                alt=""
-                width="160"
-                height="200"
-              />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">Dragsug</a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Vetle Lid Larsen</p>
-
-                <p className="book-card-tags cluster">
-                  <span className="tag">Historie</span>
-                  <span className="tag">Roman</span>
-                </p>
-              </div>
-
-              <a className="button block-button" href="#">
-                Kjøp (329,-)
-              </a>
-            </article>
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1793361704/Produktbilder/Bokbasen/9788272018985.jpg?auto=webp&format=pjpg&width=480&height=600&fit=cover"
-                alt=""
-                width="160"
-                height="200"
-              />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">Kodenavn Jakob</a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Hege Duckert</p>
-
-                <p className="book-card-tags cluster">
-                  <span className="tag">Historie</span>
-                  <span className="tag">Dokumentar</span>
-                  <span className="tag">Andre verdenskrig</span>
-                </p>
-              </div>
-
-              <a className="button block-button" href="#">
-                Kjøp (459,-)
-              </a>
-            </article>
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1792609302/Produktbilder/Bokbasen/9788248943853.jpg?auto=webp&format=pjpg&width=480&height=600&fit=cover"
-                alt=""
-                width="160"
-                height="200"
-              />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">Ukraina: en vinterreise</a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Erika Fatland</p>
-
-                <p className="book-card-tags cluster">
-                  <span className="tag">Reiseskildringer</span>
-                  <span className="tag">Ukraina</span>
-                </p>
-              </div>
-
-              <a className="button block-button" href="#">
-                Kjøp (489,-)
-              </a>
-            </article>
-            <article className="box box-light-gray book-card">
-              <img
-                className="book-card-cover"
-                src="https://www.norli.no/cdn/1781708472/Produktbilder/Bokbasen/9788248942672.jpg?auto=webp&format=pjpg&width=480&height=600&fit=cover"
-                alt=""
-                width="160"
-                height="200"
-              />
-
-              <div className="stack">
-                <h3 className="eyebrow-heading book-card-title">
-                  <a href="#">
-                    Norge i rødt, hvitt og statistikk, signert eksemplar for å
-                    lage en lang tittel
-                  </a>
-                </h3>
-
-                <p className="book-card-author">Skrevet av Ulf Andersen</p>
-
-                <p className="book-card-tags cluster">
-                  <span className="tag">Dokumentar</span>
-                  <span className="tag">Samfunn</span>
-                  <span className="tag">Statistikk</span>
-                </p>
-              </div>
-
-              <a className="button block-button" href="#">
-                Kjøp (379,-)
-              </a>
-            </article>
+            ))}
           </div>
         </Stack>
 
