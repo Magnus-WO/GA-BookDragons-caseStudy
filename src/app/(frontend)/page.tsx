@@ -4,6 +4,7 @@ import Section from "@/Components/Section/Section";
 import Stack from "@/Components/Stack/Stack";
 import Heading from "@/Components/Heading/Heading";
 import Grid from "@/Components/Grid/Grid";
+import Button from "@/Components/Button/Button";
 
 export default async function IndexPage() {
   return (
@@ -42,6 +43,7 @@ export default async function IndexPage() {
         <Stack as="section" variant="stack-large" marginType="m-b-xl">
           <Heading as="h2" headingText="Nyheter i butikken" />
           <div className="reel">
+            {/* Starten på ett kort */}
             <article className="box box-light-gray book-card">
               <img
                 className="book-card-cover"
@@ -65,10 +67,12 @@ export default async function IndexPage() {
                 </p>
               </div>
 
-              <a className="button block-button" href="#">
-                Kjøp (399,-)
-              </a>
+              <Button block="block-button" link="#" price={399}>
+                Kjøp:
+              </Button>
             </article>
+
+            {/* Slutten på ett kort */}
             <article className="box box-light-gray book-card">
               <img
                 className="book-card-cover"
