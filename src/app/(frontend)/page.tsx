@@ -7,9 +7,13 @@ import Grid from "@/Components/Grid/Grid";
 
 import BookCard from "@/Components/BookCard/BookCard";
 import { type Book } from "@/types/bookType.types";
-import { booksTestArray } from "@/ts/booksTestArray";
-import { testBook } from "@/ts/booksTestArray";
 import StaffPick from "@/Components/StaffPick/StaffPick";
+import PersonCard from "@/Components/PersonCard/PersonCard";
+
+import { testBook } from "@/ts/booksTestArray";
+import { booksTestArray } from "@/ts/booksTestArray";
+import { employeeTestArray } from "../../ts/employeesTest";
+import { Employee } from "@/types/employeeType.types";
 
 export default async function IndexPage() {
   return (
@@ -371,64 +375,16 @@ export default async function IndexPage() {
           </div>
         </section>
 
-        <section className="m-b-xl stack stack-large">
-          <h2 className="section-heading">Våre ansatte</h2>
+        <Stack as="section" marginType="m-b-xl" variant="stack-large">
+          <Heading as="h2">Våre ansatte</Heading>
           <article className="section section-green">
             <div className="container grid three-columns">
-              <div className="stack employee-card">
-                <img
-                  className="employee-card-photo"
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-                  alt=""
-                  height="959"
-                  width="640"
-                />
-                <h3 className="section-subheading">Christian Navnesen</h3>
-                <p>
-                  Hei! Jeg er daglig leder og eier av BookDragons. Jeg har lest
-                  bøker helt siden jeg var liten og greide å oppfylle drømmen om
-                  å starte en bokhandel her i Lillestrøm. Jeg elsker science
-                  fiction, fantasy og humor.
-                </p>
-              </div>
-
-              <div className="stack employee-card">
-                <img
-                  className="employee-card-photo"
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1361&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-                  alt=""
-                  height="805"
-                  width="640"
-                />
-                <h3 className="section-subheading">Wenche Book-Jensen</h3>
-                <p>
-                  Jeg er butikkens ryddehjelp, nettbutikk-medarbeider og ekspert
-                  på sosiale medier! Jeg elsker å følge med på hva andre leser
-                  på #BookTok, og hjelper deg gjerne med å finne flere bøker i
-                  samme sjanger når du har funnet en du liker godt! Stikk gjerne
-                  innom og slå av en prat!
-                </p>
-              </div>
-
-              <div className="stack employee-card">
-                <img
-                  className="employee-card-photo"
-                  src="https://images.unsplash.com/photo-1522556189639-b150ed9c4330?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
-                  alt=""
-                  height="960"
-                  width="640"
-                />
-                <h3 className="section-subheading">Petter Ristesen</h3>
-                <p>
-                  Jeg er BookDragons' eminente barista, og jeg lager gjerne en
-                  god kopp kaffe eller nytrukket te til deg mens du sitter og
-                  fortaper deg i bøkene våre. Jeg slår gjerne av en prat om gode
-                  krimromaner, og har mange gode tips om klassikere du bør lese!
-                </p>
-              </div>
+              {employeeTestArray.map((employee: Employee) => (
+                <PersonCard as="div" employee={employee} key={employee.id} />
+              ))}
             </div>
           </article>
-        </section>
+        </Stack>
 
         <section className="m-b-xl stack stack-large">
           <div className="container grid two-plus-one-columns">
