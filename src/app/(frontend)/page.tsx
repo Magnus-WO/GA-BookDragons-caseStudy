@@ -5,6 +5,7 @@ import Stack from "@/Components/Stack/Stack";
 import Heading from "@/Components/Heading/Heading";
 import Grid from "@/Components/Grid/Grid";
 import Button from "@/Components/Button/Button";
+import Tag from "@/Components/Tag/Tag";
 
 export default async function IndexPage() {
   return (
@@ -61,9 +62,9 @@ export default async function IndexPage() {
                 <p className="book-card-author">Skrevet av Wenche Andersen</p>
 
                 <p className="book-card-tags cluster">
-                  <span className="tag">Kokebok</span>
-                  <span className="tag">Baking</span>
-                  <span className="tag">Matlaging</span>
+                  <Tag className="tag" link="#" tagText="Kokebok" />
+                  <Tag className="tag" link="#" tagText="Baking" />
+                  <Tag className="tag" link="#" tagText="Matlaging" />
                 </p>
               </div>
 
