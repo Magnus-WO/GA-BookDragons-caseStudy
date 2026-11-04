@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Heading from "../Heading/Heading";
 import { type Employee } from "@/types/employeeType.types";
+import Avatar from "../Avatar/Avatar";
 
 export type PersonCardProps = {
   as: "article" | "div" | "section";
@@ -12,12 +13,18 @@ export default function PersonCard({ as, employee }: PersonCardProps) {
   return (
     <Element className="stack employee-card">
       {/* Avatar start */}
-      <Image
+      {/* <Image
         className="employee-card-photo"
         src={employee.image}
         alt={`Portrettbilde av ${employee.firstName}`}
         height={959}
         width={640}
+      /> */}
+      <Avatar
+        employee={employee}
+        height={959}
+        width={640}
+        className="employee-card-photo"
       />
       <Heading as="h3" className="section-subheading">
         {employee.firstName} {employee.lastName}
