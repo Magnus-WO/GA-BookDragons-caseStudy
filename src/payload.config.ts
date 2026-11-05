@@ -9,6 +9,7 @@ import { migrations } from "./migrations";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { HeaderGlobal } from "./globals/headerGlobal";
+import { CTAblock } from "./blocks/CTAblock";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -24,7 +25,7 @@ const collections: CollectionConfig[] = [Users, Media];
  * Blokker
  * Legg blokker inn i dette arrayet for å inkludere dem.
  */
-const blocks: Block[] = [];
+const blocks: Block[] = [CTAblock];
 const globals: GlobalConfig[] = [HeaderGlobal];
 
 /**

@@ -65,7 +65,9 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
-  blocks: {};
+  blocks: {
+    'cta-block': CTABlockType;
+  };
   collections: {
     users: User;
     media: Media;
@@ -120,6 +122,16 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlockType".
+ */
+export interface CTABlockType {
+  title: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta-block';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

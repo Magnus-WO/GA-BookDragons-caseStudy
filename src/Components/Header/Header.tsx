@@ -1,15 +1,11 @@
 import Link from "next/link";
-import type {Header as HeaderData} from "@/payload-types"
+// import type {Header as HeaderData} from "@/payload-types"
 
-
-export type HeaderProps = {
-  header: 
-}
-export default function SiteHeader({header}: HeaderProps) {
+export default function SiteHeader() {
   return (
     <header className="site-header">
       <Link href={"/"} className="logo">
-        {header.siteName}
+        BookDragons
       </Link>
       <nav>
         <Link href={""}>Om oss</Link>
