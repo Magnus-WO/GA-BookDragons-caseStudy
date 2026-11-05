@@ -1,6 +1,7 @@
+import Container from "../Container/Container";
 export type GridProps = {
-  children: React.ReactNode;
-  gap: "large-gap" | "small-gap" | "no-gap";
+  as?: "div" | "section" | "main" | "container";
+  gap: "large" | "small" | "no";
   columns:
     | "auto-columns"
     | "two-columns"
@@ -10,7 +11,7 @@ export type GridProps = {
     | "one-plus-two-columns";
   productPosition?: "product-on-left" | "product-on-right";
   recommendationSection?: "" | "recommendation-section";
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export default function Grid({
   children,
@@ -18,14 +19,14 @@ export default function Grid({
   columns,
   productPosition,
   recommendationSection,
+  as = "div",
 }: GridProps) {
+  const Element = as === "container" ? Container : as;
   return (
-    <>
-      <div
-        className={`container grid ${columns} ${gap} ${recommendationSection} ${productPosition}`}
-      >
-        {children}
-      </div>
-    </>
+    <Element
+      className={`container grid ${columns} ${gap}-gap ${recommendationSection ?? ""} ${productPosition ?? ""}`}
+    >
+      {children}
+    </Element>
   );
 }
