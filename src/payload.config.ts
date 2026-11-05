@@ -1,36 +1,31 @@
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import path from 'path';
-import { Block, buildConfig, CollectionConfig } from 'payload';
-import { fileURLToPath } from 'url';
-import sharp from 'sharp';
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import path from "path";
+import { Block, buildConfig, CollectionConfig, GlobalConfig } from "payload";
+import { fileURLToPath } from "url";
+import sharp from "sharp";
 import { migrations } from "./migrations";
 
-import { Users } from './collections/Users';
-import { Media } from './collections/Media';
+import { Users } from "./collections/Users";
+import { Media } from "./collections/Media";
+import { HeaderGlobal } from "./globals/headerGlobal";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-
-
 
 /**
  * Collections
  * Legg innholdssamlinger inn i dette arrayet for å inkludere dem.
  */
 
-const collections: CollectionConfig[] = [
-  Users,
-  Media
-];
+const collections: CollectionConfig[] = [Users, Media];
 
 /**
  * Blokker
  * Legg blokker inn i dette arrayet for å inkludere dem.
  */
 const blocks: Block[] = [];
-
-
+const globals: GlobalConfig[] = [HeaderGlobal];
 
 /**
  * Payload-konfigurasjon
@@ -47,16 +42,17 @@ export default buildConfig({
   },
   blocks,
   collections,
+  globals,
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.DATABASE_URL || "",
     },
-    prodMigrations: migrations
+    prodMigrations: migrations,
   }),
   sharp,
   plugins: [],

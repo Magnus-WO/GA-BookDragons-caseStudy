@@ -87,8 +87,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'header-block': HeaderBlock;
+  };
+  globalsSelect: {
+    'header-block': HeaderBlockSelect<false> | HeaderBlockSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -316,6 +320,32 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-block".
+ */
+export interface HeaderBlock {
+  id: number;
+  siteName: string;
+  siteAboutUs: string;
+  siteSales: string;
+  siteLogIn: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-block_select".
+ */
+export interface HeaderBlockSelect<T extends boolean = true> {
+  siteName?: T;
+  siteAboutUs?: T;
+  siteSales?: T;
+  siteLogIn?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
