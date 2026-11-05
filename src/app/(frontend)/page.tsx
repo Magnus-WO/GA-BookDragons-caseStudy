@@ -25,7 +25,7 @@ export default async function IndexPage() {
 
       <main>
         <Section variant="yellow">
-          <Grid columns="one-plus-two-columns" gap="large-gap">
+          <Grid columns="one-plus-two-columns" gap="large">
             <div>
               <img
                 src="https://images.unsplash.com/photo-1774070231417-4bf4d2025878?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"

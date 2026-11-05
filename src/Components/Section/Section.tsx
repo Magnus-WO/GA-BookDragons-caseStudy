@@ -2,7 +2,7 @@ import Container from "../Container/Container";
 
 export type SectionProps = {
   as?: "section" | "div" | "article" | "main" | "container";
-  className: string;
+  className?: string;
   variant: "yellow" | "blue" | "green" | "pink" | "brown";
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -14,5 +14,9 @@ export default function Section({
   ...rest
 }: SectionProps) {
   const Element = as === "container" ? Container : as;
-  return <Element className={`section section-${variant}`}>{children}</Element>;
+  return (
+    <Element className={`section section-${variant} ${className ?? ""}`}>
+      {children}
+    </Element>
+  );
 }
