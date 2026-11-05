@@ -10,5 +10,23 @@ export const CTAblock: Block = {
       label: "Tittel",
       required: true,
     },
+    {
+      name: "description",
+      type: "richText",
+      label: "Beskrivelse",
+      required: true,
+    },
+    {
+      name: "image",
+      type: "text",
+      label: "Bildet",
+      required: true,
+    },
+    {
+      name: "button",
+      type: "text",
+      label: "Text til knapp",
+      required: true,
+    },
   ],
 };
