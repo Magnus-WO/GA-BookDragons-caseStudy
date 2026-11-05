@@ -91,9 +91,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'header-block': HeaderBlock;
+    homepage: Homepage;
   };
   globalsSelect: {
     'header-block': HeaderBlockSelect<false> | HeaderBlockSelect<true>;
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -129,6 +131,23 @@ export interface UserAuthOperations {
  */
 export interface CTABlockType {
   title: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: string;
+  button: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta-block';
@@ -348,6 +367,16 @@ export interface HeaderBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: number;
+  layout?: CTABlockType[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header-block_select".
  */
 export interface HeaderBlockSelect<T extends boolean = true> {
@@ -358,6 +387,32 @@ export interface HeaderBlockSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  layout?:
+    | T
+    | {
+        'cta-block'?: T | CTABlockTypeSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTABlockType_select".
+ */
+export interface CTABlockTypeSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  image?: T;
+  button?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
