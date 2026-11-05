@@ -60,7 +60,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         />
       </Head>
       <body>
-        <SiteHeader header={header} />
+        {/* <SiteHeader header={header} /> */}
         {children}
       </body>
     </html>
