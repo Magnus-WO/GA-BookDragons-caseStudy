@@ -11,6 +11,7 @@ import { Media } from "./collections/Media";
 import { HeaderGlobal } from "./globals/headerGlobal";
 import { CTAblock } from "./blocks/CTAblock";
 import { HomePage } from "./globals/homePage";
+import { Books } from "./collections/Books";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,7 +21,7 @@ const dirname = path.dirname(filename);
  * Legg innholdssamlinger inn i dette arrayet for å inkludere dem.
  */
 
-const collections: CollectionConfig[] = [Users, Media];
+const collections: CollectionConfig[] = [Users, Media, Books];
 
 /**
  * Blokker
