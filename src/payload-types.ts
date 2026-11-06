@@ -72,6 +72,7 @@ export interface Config {
     users: User;
     media: Media;
     books: Book;
+    authors: Author;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     books: BooksSelect<false> | BooksSelect<true>;
+    authors: AuthorsSelect<false> | AuthorsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -206,7 +208,7 @@ export interface Media {
   focalY?: number | null;
 }
 /**
- * Dette er samlingen med alle bøkene.
+ * Her kan du legge til, søke opp og endre bøker.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "books".
@@ -223,7 +225,27 @@ export interface Book {
    */
   generateSlug?: boolean | null;
   slug: string;
+  author: number | Author;
   stock: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Her finner du alle forfattere.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "authors".
+ */
+export interface Author {
+  id: number;
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  about: string;
+  image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -262,6 +284,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'books';
         value: number | Book;
+      } | null)
+    | ({
+        relationTo: 'authors';
+        value: number | Author;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -359,7 +385,22 @@ export interface BooksSelect<T extends boolean = true> {
   discount?: T;
   generateSlug?: T;
   slug?: T;
+  author?: T;
   stock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "authors_select".
+ */
+export interface AuthorsSelect<T extends boolean = true> {
+  id?: T;
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  about?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }

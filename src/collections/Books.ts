@@ -6,7 +6,7 @@ export const Books: CollectionConfig = {
   admin: {
     group: "Collections",
     useAsTitle: "title",
-    description: "Dette er samlingen med alle bøkene.",
+    description: "Her kan du legge til, søke opp og endre bøker.",
   },
   defaultSort: [`title`],
 
@@ -16,10 +16,11 @@ export const Books: CollectionConfig = {
       label: "ID",
       type: "number",
       required: true,
+      unique: true,
     },
     {
       name: "title",
-      label: "Tittle",
+      label: "Tittel",
       type: "text",
       required: true,
     },
@@ -50,20 +51,21 @@ export const Books: CollectionConfig = {
     },
     {
       name: "discount",
-      label: "Rabatt?",
+      label: "Rabatt i prosent?",
       type: "number",
       min: 0,
       required: true,
     },
     slugField(),
-    // {
-    //   name: "author",
-    //   label: "Forfatter",
-    //   type: "relationship",
-    //   relationTo: "authors",
-    //   required: true,
-    //   hasMany: false,
-    // },
+    {
+      name: "author",
+      label: "Forfatter",
+      type: "relationship",
+      relationTo: "authors",
+      required: true,
+      hasMany: false,
+    },
+
     // {
     //   name: "genres",
     //   label: "Sjanger",
