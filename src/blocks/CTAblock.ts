@@ -1,8 +1,9 @@
-import { Block } from "payload";
+import { Block, slugField } from "payload";
 
 export const CTAblock: Block = {
   slug: "cta-block",
-  interfaceName: "CTABlockType",
+  interfaceName: "C2ABlockType",
+  labels: { singular: "Call to Action Block", plural: "Call to Action Blocks" },
   fields: [
     {
       name: "title",
@@ -28,5 +29,34 @@ export const CTAblock: Block = {
       label: "Text til knapp",
       required: true,
     },
+    {
+      name: "color",
+      label: "Bakgrunnsfarge",
+      type: "select",
+      required: true,
+      options: [
+        {
+          label: "Gul",
+          value: "yellow",
+        },
+        {
+          label: "Blå",
+          value: "blue",
+        },
+        {
+          label: "Grønn",
+          value: "green",
+        },
+        {
+          label: "Rosa",
+          value: "pink",
+        },
+        {
+          label: "Brun",
+          value: "brown",
+        },
+      ],
+    },
+    slugField({ useAsSlug: "title" }),
   ],
 };
