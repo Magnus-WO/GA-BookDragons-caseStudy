@@ -66,7 +66,7 @@ export interface Config {
     users: UserAuthOperations;
   };
   blocks: {
-    'cta-block': CTABlockType;
+    'cta-block': C2ABlockType;
   };
   collections: {
     users: User;
@@ -127,9 +127,9 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTABlockType".
+ * via the `definition` "C2ABlockType".
  */
-export interface CTABlockType {
+export interface C2ABlockType {
   title: string;
   description: {
     root: {
@@ -148,6 +148,12 @@ export interface CTABlockType {
   };
   image: string;
   button: string;
+  color: 'yellow' | 'blue' | 'green' | 'pink' | 'brown';
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta-block';
@@ -371,7 +377,7 @@ export interface HeaderBlock {
  */
 export interface Homepage {
   id: number;
-  layout?: CTABlockType[] | null;
+  layout?: C2ABlockType[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -396,7 +402,7 @@ export interface HomepageSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        'cta-block'?: T | CTABlockTypeSelect<T>;
+        'cta-block'?: T | C2ABlockTypeSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -404,13 +410,16 @@ export interface HomepageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTABlockType_select".
+ * via the `definition` "C2ABlockType_select".
  */
-export interface CTABlockTypeSelect<T extends boolean = true> {
+export interface C2ABlockTypeSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   image?: T;
   button?: T;
+  color?: T;
+  generateSlug?: T;
+  slug?: T;
   id?: T;
   blockName?: T;
 }
