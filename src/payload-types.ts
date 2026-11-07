@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {
     'cta-block': C2ABlockType;
+    'book-reel-block': BookReelBlockType;
   };
   collections: {
     users: User;
@@ -166,48 +167,26 @@ export interface C2ABlockType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "BookReelBlockType".
  */
-export interface User {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  resetPasswordRequestedAt?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
+export interface BookReelBlockType {
+  title: string;
+  books: (number | Book)[];
+  marginType:
+    | 'm-b-auto'
+    | 'm-b-4xl'
+    | 'm-b-3xl'
+    | 'm-b-2xl'
+    | 'm-b-xl'
+    | 'm-b-l'
+    | 'm-b-m'
+    | 'm-b-s'
+    | 'm-b-xs'
+    | 'm-b-2xs'
+    | 'm-b-3xs';
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'book-reel-block';
 }
 /**
  * Her kan du legge til, søke opp og endre bøker.
@@ -253,6 +232,25 @@ export interface Author {
   createdAt: string;
 }
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
  * Her kan du legge til, endre og slette tags. En tag er det man setter for hver bok for å beskrive hvem den passer til, sjanger, type bok etc.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -269,6 +267,32 @@ export interface Tag {
   slug: string;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -501,7 +525,7 @@ export interface HeaderBlock {
  */
 export interface Homepage {
   id: number;
-  layout?: C2ABlockType[] | null;
+  layout?: (C2ABlockType | BookReelBlockType)[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -527,6 +551,7 @@ export interface HomepageSelect<T extends boolean = true> {
     | T
     | {
         'cta-block'?: T | C2ABlockTypeSelect<T>;
+        'book-reel-block'?: T | BookReelBlockTypeSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -544,6 +569,17 @@ export interface C2ABlockTypeSelect<T extends boolean = true> {
   color?: T;
   generateSlug?: T;
   slug?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BookReelBlockType_select".
+ */
+export interface BookReelBlockTypeSelect<T extends boolean = true> {
+  title?: T;
+  books?: T;
+  marginType?: T;
   id?: T;
   blockName?: T;
 }

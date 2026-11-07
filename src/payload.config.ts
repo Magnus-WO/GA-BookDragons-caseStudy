@@ -14,6 +14,7 @@ import { HomePage } from "./globals/homePage";
 import { Books } from "./collections/Books";
 import { Authors } from "./collections/Authors";
 import { Tags } from "./collections/Tags";
+import { BookReelBlock } from "./blocks/BookReel";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -29,7 +30,7 @@ const collections: CollectionConfig[] = [Users, Media, Books, Authors, Tags];
  * Blokker
  * Legg blokker inn i dette arrayet for å inkludere dem.
  */
-const blocks: Block[] = [CTAblock];
+const blocks: Block[] = [CTAblock, BookReelBlock];
 const globals: GlobalConfig[] = [HeaderGlobal, HomePage];
 
 /**

@@ -1,3 +1,4 @@
+import { BookReelBlock } from "@/blocks/BookReel";
 import { CTAblock } from "@/blocks/CTAblock";
 import { GlobalConfig } from "payload";
 
@@ -8,7 +9,7 @@ export const HomePage: GlobalConfig = {
       name: "layout",
       label: "Blokker",
       type: "blocks",
-      blocks: [CTAblock],
+      blocks: [CTAblock, BookReelBlock],
     },
   ],
 };
