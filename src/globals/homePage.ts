@@ -6,6 +6,7 @@ export const HomePage: GlobalConfig = {
   fields: [
     {
       name: "layout",
+      label: "Blokker",
       type: "blocks",
       blocks: [CTAblock],
     },
