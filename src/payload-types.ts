@@ -73,6 +73,7 @@ export interface Config {
     media: Media;
     books: Book;
     authors: Author;
+    tags: Tag;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     books: BooksSelect<false> | BooksSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
+    tags: TagsSelect<false> | TagsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -226,6 +228,7 @@ export interface Book {
   generateSlug?: boolean | null;
   slug: string;
   author: number | Author;
+  tags: (number | Tag)[];
   stock: number;
   updatedAt: string;
   createdAt: string;
@@ -246,6 +249,24 @@ export interface Author {
   slug: string;
   about: string;
   image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Her kan du legge til, endre og slette tags. En tag er det man setter for hver bok for å beskrive hvem den passer til, sjanger, type bok etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: number;
+  title: string;
+  description: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -288,6 +309,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'authors';
         value: number | Author;
+      } | null)
+    | ({
+        relationTo: 'tags';
+        value: number | Tag;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -386,6 +411,7 @@ export interface BooksSelect<T extends boolean = true> {
   generateSlug?: T;
   slug?: T;
   author?: T;
+  tags?: T;
   stock?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -401,6 +427,18 @@ export interface AuthorsSelect<T extends boolean = true> {
   slug?: T;
   about?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags_select".
+ */
+export interface TagsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  generateSlug?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

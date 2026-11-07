@@ -13,6 +13,7 @@ import { CTAblock } from "./blocks/CTAblock";
 import { HomePage } from "./globals/homePage";
 import { Books } from "./collections/Books";
 import { Authors } from "./collections/Authors";
+import { Tags } from "./collections/Tags";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,7 +23,7 @@ const dirname = path.dirname(filename);
  * Legg innholdssamlinger inn i dette arrayet for å inkludere dem.
  */
 
-const collections: CollectionConfig[] = [Users, Media, Books, Authors];
+const collections: CollectionConfig[] = [Users, Media, Books, Authors, Tags];
 
 /**
  * Blokker
