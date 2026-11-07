@@ -66,14 +66,14 @@ export const Books: CollectionConfig = {
       hasMany: false,
     },
 
-    // {
-    //   name: "genres",
-    //   label: "Sjanger",
-    //   type: "relationship",
-    //   relationTo: "genres",
-    //   hasMany: true,
-    //   required: true,
-    // },
+    {
+      name: "tags",
+      label: "Tags",
+      type: "relationship",
+      relationTo: "tags",
+      hasMany: true,
+      required: true,
+    },
     {
       name: "stock",
       label: "Varelager",
